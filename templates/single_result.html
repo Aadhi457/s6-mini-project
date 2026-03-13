@@ -7,22 +7,106 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --accent-blue: #38bdf8;
-            --accent-green: #10b981;
-            --accent-red: #f43f5e;
-            --accent-yellow: #fbbf24;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --bg-dark: #0a0e27;
+            --bg-light: #0f172a;
+            --card-bg: #1a2847;
+            --accent-blue: #64b5f6;
+            --accent-cyan: #4dd0e1;
+            --accent-green: #66bb6a;
+            --accent-red: #ef5350;
+            --accent-yellow: #ffa726;
+            --accent-purple: #ba68c8;
+            --text-main: #e3f2fd;
+            --text-secondary: #b0bec5;
+            --text-muted: #78909c;
         }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Inter', sans-serif; }
-        .navbar { background-color: rgba(15, 23, 42, 0.9); border-bottom: 1px solid #334155; }
-        .card { background-color: var(--card-bg); border: 1px solid #334155; border-radius: 12px; }
-        .badge-high { background-color: rgba(244, 63, 94, 0.2); color: var(--accent-red); border: 1px solid var(--accent-red); }
-        .badge-medium { background-color: rgba(251, 191, 36, 0.2); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); }
-        .badge-low { background-color: rgba(56, 189, 248, 0.2); color: var(--accent-blue); border: 1px solid var(--accent-blue); }
-        .report-header { border-bottom: 2px solid #334155; padding-bottom: 20px; }
+        body { 
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0d1b2a 100%);
+            color: var(--text-main);
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+        }
+        h1, h2, h3, h4, h5, h6 { 
+            color: var(--text-main) !important;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        p, span, div { color: var(--text-main); }
+        .text-muted { color: var(--text-muted) !important; }
+        .text-info { color: var(--accent-cyan) !important; }
+        .text-danger { color: var(--accent-red) !important; }
+        .text-success { color: var(--accent-green) !important; }
+        .navbar { 
+            background: linear-gradient(90deg, rgba(10, 14, 39, 0.95), rgba(15, 23, 42, 0.95));
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(100, 181, 246, 0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .navbar-brand { color: var(--text-main) !important; }
+        .card { 
+            background: linear-gradient(135deg, var(--card-bg), rgba(26, 40, 71, 0.6));
+            border: 1px solid rgba(100, 181, 246, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            color: var(--text-main);
+        }
+        .card.bg-dark {
+            background: rgba(15, 23, 42, 0.5) !important;
+            border: 1px solid rgba(100, 181, 246, 0.15);
+        }
+        .badge-high { 
+            background-color: rgba(239, 83, 80, 0.15);
+            color: var(--accent-red);
+            border: 1px solid rgba(239, 83, 80, 0.3);
+            font-weight: 600;
+        }
+        .badge-medium { 
+            background-color: rgba(255, 167, 38, 0.15);
+            color: var(--accent-yellow);
+            border: 1px solid rgba(255, 167, 38, 0.3);
+            font-weight: 600;
+        }
+        .badge-low { 
+            background-color: rgba(100, 181, 246, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(100, 181, 246, 0.3);
+            font-weight: 600;
+        }
+        .bg-danger { 
+            background-color: rgba(239, 83, 80, 0.15) !important;
+            color: var(--accent-red) !important;
+            border: 1px solid rgba(239, 83, 80, 0.3);
+        }
+        .bg-success { 
+            background-color: rgba(102, 187, 106, 0.15) !important;
+            color: var(--accent-green) !important;
+            border: 1px solid rgba(102, 187, 106, 0.3);
+        }
+        .badge {
+            padding: 8px 14px;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        .report-header { 
+            border-bottom: 2px solid rgba(100, 181, 246, 0.2);
+            padding-bottom: 20px;
+        }
+        .btn-outline-info { 
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+            transition: all 0.3s ease;
+        }
+        .btn-outline-info:hover {
+            background-color: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .border-secondary { border-color: rgba(100, 181, 246, 0.2) !important; }
+        .border-info { border-color: rgba(77, 208, 225, 0.3) !important; }
+        .bg-opacity-10 { opacity: 0.1; }
+        small, .small { color: var(--text-secondary); }
+        strong { color: var(--text-main); font-weight: 600; }
+        h4 { color: var(--accent-red); }
     </style>
 </head>
 <body>
