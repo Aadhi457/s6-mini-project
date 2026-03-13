@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payload Report | Malware Scanner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --accent-blue: #38bdf8;
+            --accent-green: #10b981;
+            --accent-red: #f43f5e;
+            --accent-yellow: #fbbf24;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Inter', sans-serif; }
+        .navbar { background-color: rgba(15, 23, 42, 0.9); border-bottom: 1px solid #334155; }
+        .card { background-color: var(--card-bg); border: 1px solid #334155; border-radius: 12px; }
+        .badge-high { background-color: rgba(244, 63, 94, 0.2); color: var(--accent-red); border: 1px solid var(--accent-red); }
+        .badge-medium { background-color: rgba(251, 191, 36, 0.2); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); }
+        .badge-low { background-color: rgba(56, 189, 248, 0.2); color: var(--accent-blue); border: 1px solid var(--accent-blue); }
+        .report-header { border-bottom: 2px solid #334155; padding-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark sticky-top mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="fas fa-shield-virus me-2 text-info"></i>DETECTION <span class="text-info">REPORT</span>
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card p-5">
+        <div class="report-header d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-1">Payload Analysis</h1>
+                <p class="text-muted mb-0"><i class="fas fa-file me-2"></i>Target: <span class="text-info">{{ filename }}</span></p>
+            </div>
+            <div>
+                {% if matches %}
+                    <span class="badge bg-danger p-2 px-3"><i class="fas fa-biohazard me-2"></i>THREAT DETECTED</span>
+                {% else %}
+                    <span class="badge bg-success p-2 px-3"><i class="fas fa-check-circle me-2"></i>CLEAN</span>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if matches %}
+            <h5 class="mb-4 text-uppercase text-muted small fw-bold">Identification Results</h5>
+            {% for match in matches %}
+                <div class="card bg-dark border-secondary p-3 mb-3">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h4 class="text-danger h5">{{ match.rule }}</h4>
+                            <p class="mb-2 text-muted">{{ match.meta.description or 'No description available for this signature.' }}</p>
+                            <div class="p-2 rounded bg-opacity-10 bg-info border border-info small text-info">
+                                <strong><i class="fas fa-shield-alt me-2"></i>Mitigation:</strong> {{ match.meta.mitigation or 'No mitigation strategy available.' }}
+                            </div>
+                        </div>
+                        <span class="badge {{ 'badge-high' if match.meta.severity|upper == 'HIGH' else 'badge-medium' if match.meta.severity|upper == 'MEDIUM' else 'badge-low' }}">
+                            {{ match.meta.severity|upper or 'UNKNOWN' }}
+                        </span>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="text-center py-5">
+                <div class="mb-3 text-success">
+                    <i class="fas fa-shield-check fa-4x"></i>
+                </div>
+                <h2 class="h4">No Threats Identified</h2>
+                <p class="text-muted">The file content does not match any known malicious signatures in the current database.</p>
+            </div>
+        {% endif %}
+
+        <div class="mt-4 pt-4 border-top border-secondary">
+            <a href="/" class="btn btn-outline-info">
+                <i class="fas fa-home me-2"></i>Return to Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Potential Cryptominer Configuration
+pool = "stratum+tcp://xmr-eu1.nanopool.org:14444"
+wallet = "4BRLZZvG...monero...wallet"
+rig-id = "test-rig"
+algo = "cryptonight"

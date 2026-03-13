@@ -1,0 +1,3 @@
+Keylogger test file
+GetAsyncKeyState detected
+SetWindowsHookEx active

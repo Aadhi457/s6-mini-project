@@ -1,0 +1,15 @@
+# Suspicious Script searching for sensitive data
+import os
+
+def steal_data():
+    paths = [
+        "~/.config/google-chrome/Default/Login Data",
+        "~/.mozilla/firefox/*.default/Cookies",
+        "~/wallet.dat",
+        "~/.ssh/id_rsa"
+    ]
+    for p in paths:
+        if os.path.exists(os.path.expanduser(p)):
+            print(f"Found sensitive file: {p}")
+
+steal_data()
