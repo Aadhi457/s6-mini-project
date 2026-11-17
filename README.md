@@ -53,4 +53,4 @@ The system detects various threats including:
 - **Packed Executables** (UPX, etc.)
 
 ---
-*Disclaimer: This tool is for educational and security research purposes only.*
+*Disclaimer: This tool is for educational and security research purposes only*
